@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Meal Planner</title>
+    <style>
+        .table {
+            margin-top: 45px;
+        }
+        #nospacehr {
+            border-top: 1px solid black;        
+        }
+        #fixed-header {
+            background-color: #F8F9FA;
+            height: 85px;
+        }
+        h1 {
+            margin-top: -60px;
+            text-align: center;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            
+        }
+        .button {
+        position: relative;
+        margin-right: 10px;
+        margin-top: -60px;
+        float: right;
+
+        display: inline-block;
+        padding: 5px 15px;
+        font-size: 22px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #3089C8;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 9px #999;
+        }
+        .button:hover {
+            background-color: #3e8e41
+        }
+        .button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+        }
+        
+    </style>
+
+<script>
+    function toggleField(hideObj,showObj){
+      hideObj.disabled=true;        
+      hideObj.style.display='none';
+      showObj.disabled=false;   
+      showObj.style.display='inline';
+      showObj.focus();
+    }
+
+</script>
+
+
+  </head>
+
+  <body>
+      <!--function somefunction(value){
+     if(value == customOption){
+      $("customOption").css("background-color","red");
+     }
+  }
+  onchange="somefunction($(this).val())"> -->
+
+      <!-- header -->
+    <div id="fixed-header">
+        <img src="gif.gif" alt="" width="80">
+            <h1>Weakly Meal Planner</h1>       
+                  <button class="button" onclick="window.print();return false;">Print out</button>
+                    <hr id="nospacehr">
+    </div>   
+
+    <!-- meal planner -->
+    <div class="container">
+<div class="table">
+    <table class="table table-light border-dark table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Śniadanie Jacka</th>
+            <th scope="col">Obiad Jacka	</th>
+            <th scope="col">Kolacja Razem</th>
+            <th scope="col">Coś dla Mari</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <th scope="row">Poniedziałek</th>
+
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">jajka, orzechy, ogórki</option>
+                        <option value="2">jajka, orzechy, czekolada</option>
+                        <option value="3">banan, orzechy, czekolada</option>
+                        <option value="4">mczadi, jajka</option>
+                        <option value="5">mczadi, pomidory</option>
+                        <option value="6">mczadi, twaróg, oliwki</option>
+                        <option value="7">mczadi, kurczak</option>
+                        <option value="8">twaróg, pomidory</option>
+                        <option value="9">twaróg, ogórki</option>
+                        <option value="10">sernik, orzechy</option>
+                        <option value="11">ciecierzyca, pomidorki, ogórki</option>
+                        <option value="12">tart</option>
+                        <option value="13">onigiri</option>
+                        <option value="14">banan, twaróg, nektarinki</option>
+                        <option value="15">twaróg, fasola</option>
+                        <option value="16">brokóły, pomidorki, ser</option>
+            
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+
+                </td>
+
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="2">klopsy z brokuły</option>
+                        <option value="3">naleśniki z mięsem</option>
+                        <option value="4">wątróbka z jabłkiem, pomidorki</option>
+                        <option value="5">tart, brokuły</option>
+                        <option value="6">spaghetti z śmetaną i kurczakiem</option>
+                        <option value="7">brito, brokuły</option>
+                        <option value="8">pierogi, brokuły</option>
+                        <option value="9">karkówka, brokuły</option>
+                        <option value="10">zupa(pomidor, fasola, ziemniaki)</option>
+                        <option value="11">kurczak z boczkiem, brokuły</option>
+                        <option value="12">kluski z mięsem</option>
+
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">barszcz</option>
+                        <option value="2">pierogi </option>
+                        <option value="3">supi souzi</option>
+                        <option value="4">zuppa z kolafiorem</option>
+                        <option value="5">klopsy, ziemniaki, grzyby</option>
+                        <option value="6">gamburger</option>
+                        <option value="7">khaczapuri/lobiani/kubdari/pizza</option>
+                        <option value="8">sznycel</option>
+                        <option value="9">spaghetti z grzybami i ze śmetaną</option>
+                        <option value="10">spaghetti z owocami morza</option>
+                        <option value="11">ryba pecena, sałata z fetą, mczadi</option>
+                        <option value="12">ryba pecena, brokuły, mczadi</option>
+                        <option value="13">żeberga, ziemniaki</option>
+                        <option value="14">piecień, ziemniaki, grzyby</option>
+                        <option value="15">gołąbki</option>
+                        <option value="16">tortilla</option>
+                        <option value="17">onogiri</option>
+                        <option value="18">lobio</option>
+                        <option value="19">kurczak z boczkiem</option>
+                        <option value="20">kluski z mięsem</option>
+                        <option value="21">czikhirtma</option>
+                        <option value="22">bliny</option>
+                        <option value="23">plow</option>
+                        <option value="24">grochówka</option>
+                        <option value="25">tarta</option>
+                        <option value="26">gupta</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">twaróg</option>
+                        <option value="2">mleko, płatki kukur.</option>
+                        <option value="3">sernik</option>
+                        <option value="4">tart</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                
+            </tr>
+
+
+            <tr>
+
+                <th scope="row">Wtorek</th>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">jajka, orzechy, ogórki</option>
+                        <option value="2">jajka, orzechy, czekolada</option>
+                        <option value="3">banan, orzechy, czekolada</option>
+                        <option value="4">mczadi, jajka</option>
+                        <option value="5">mczadi, pomidory</option>
+                        <option value="6">mczadi, twaróg, oliwki</option>
+                        <option value="7">mczadi, kurczak</option>
+                        <option value="8">twaróg, pomidory</option>
+                        <option value="9">twaróg, ogórki</option>
+                        <option value="10">sernik, orzechy</option>
+                        <option value="11">ciecierzyca, pomidorki, ogórki</option>
+                        <option value="12">tart</option>
+                        <option value="13">onigiri</option>
+                        <option value="14">banan, twaróg, nektarinki</option>
+                        <option value="15">twaróg, fasola</option>
+                        <option value="16">brokóły, pomidorki, ser</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="2">klopsy z brokuły</option>
+                        <option value="3">naleśniki z mięsem</option>
+                        <option value="4">wątróbka z jabłkiem, pomidorki</option>
+                        <option value="5">tart, brokuły</option>
+                        <option value="6">spaghetti z śmetaną i kurczakiem</option>
+                        <option value="7">brito, brokuły</option>
+                        <option value="8">pierogi, brokuły</option>
+                        <option value="9">karkówka, brokuły</option>
+                        <option value="10">zupa(pomidor, fasola, ziemniaki)</option>
+                        <option value="11">kurczak z boczkiem, brokuły</option>
+                        <option value="12">kluski z mięsem</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">barszcz</option>
+                        <option value="2">pierogi </option>
+                        <option value="3">supi souzi</option>
+                        <option value="4">zuppa z kolafiorem</option>
+                        <option value="5">klopsy, ziemniaki, grzyby</option>
+                        <option value="6">gamburger</option>
+                        <option value="7">khaczapuri/lobiani/kubdari/pizza</option>
+                        <option value="8">sznycel</option>
+                        <option value="9">spaghetti z grzybami i ze śmetaną</option>
+                        <option value="10">spaghetti z owocami morza</option>
+                        <option value="11">ryba pecena, sałata z fetą, mczadi</option>
+                        <option value="12">ryba pecena, brokuły, mczadi</option>
+                        <option value="13">żeberga, ziemniaki</option>
+                        <option value="14">piecień, ziemniaki, grzyby</option>
+                        <option value="15">gołąbki</option>
+                        <option value="16">tortilla</option>
+                        <option value="17">onogiri</option>
+                        <option value="18">lobio</option>
+                        <option value="19">kurczak z boczkiem</option>
+                        <option value="20">kluski z mięsem</option>
+                        <option value="21">czikhirtma</option>
+                        <option value="22">bliny</option>
+                        <option value="23">plow</option>
+                        <option value="24">grochówka</option>
+                        <option value="25">tarta</option>
+                        <option value="26">gupta</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">twaróg</option>
+                        <option value="2">mleko, płatki kukur.</option>
+                        <option value="3">sernik</option>
+                        <option value="4">tart</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+            
+            </tr>
+
+            <tr>
+
+                <th scope="row">Środa</th>
+
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">jajka, orzechy, ogórki</option>
+                        <option value="2">jajka, orzechy, czekolada</option>
+                        <option value="3">banan, orzechy, czekolada</option>
+                        <option value="4">mczadi, jajka</option>
+                        <option value="5">mczadi, pomidory</option>
+                        <option value="6">mczadi, twaróg, oliwki</option>
+                        <option value="7">mczadi, kurczak</option>
+                        <option value="8">twaróg, pomidory</option>
+                        <option value="9">twaróg, ogórki</option>
+                        <option value="10">sernik, orzechy</option>
+                        <option value="11">ciecierzyca, pomidorki, ogórki</option>
+                        <option value="12">tart</option>
+                        <option value="13">onigiri</option>
+                        <option value="14">banan, twaróg, nektarinki</option>
+                        <option value="15">twaróg, fasola</option>
+                        <option value="16">brokóły, pomidorki, ser</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="2">klopsy z brokuły</option>
+                        <option value="3">naleśniki z mięsem</option>
+                        <option value="4">wątróbka z jabłkiem, pomidorki</option>
+                        <option value="5">tart, brokuły</option>
+                        <option value="6">spaghetti z śmetaną i kurczakiem</option>
+                        <option value="7">brito, brokuły</option>
+                        <option value="8">pierogi, brokuły</option>
+                        <option value="9">karkówka, brokuły</option>
+                        <option value="10">zupa(pomidor, fasola, ziemniaki)</option>
+                        <option value="11">kurczak z boczkiem, brokuły</option>
+                        <option value="12">kluski z mięsem</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">barszcz</option>
+                        <option value="2">pierogi </option>
+                        <option value="3">supi souzi</option>
+                        <option value="4">zuppa z kolafiorem</option>
+                        <option value="5">klopsy, ziemniaki, grzyby</option>
+                        <option value="6">gamburger</option>
+                        <option value="7">khaczapuri/lobiani/kubdari/pizza</option>
+                        <option value="8">sznycel</option>
+                        <option value="9">spaghetti z grzybami i ze śmetaną</option>
+                        <option value="10">spaghetti z owocami morza</option>
+                        <option value="11">ryba pecena, sałata z fetą, mczadi</option>
+                        <option value="12">ryba pecena, brokuły, mczadi</option>
+                        <option value="13">żeberga, ziemniaki</option>
+                        <option value="14">piecień, ziemniaki, grzyby</option>
+                        <option value="15">gołąbki</option>
+                        <option value="16">tortilla</option>
+                        <option value="17">onogiri</option>
+                        <option value="18">lobio</option>
+                        <option value="19">kurczak z boczkiem</option>
+                        <option value="20">kluski z mięsem</option>
+                        <option value="21">czikhirtma</option>
+                        <option value="22">bliny</option>
+                        <option value="23">plow</option>
+                        <option value="24">grochówka</option>
+                        <option value="25">tarta</option>
+                        <option value="26">gupta</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">twaróg</option>
+                        <option value="2">mleko, płatki kukur.</option>
+                        <option value="3">sernik</option>
+                        <option value="4">tart</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                
+            </tr>
+
+            <tr>
+
+                <th scope="row">Czwartek</th>
+
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">jajka, orzechy, ogórki</option>
+                        <option value="2">jajka, orzechy, czekolada</option>
+                        <option value="3">banan, orzechy, czekolada</option>
+                        <option value="4">mczadi, jajka</option>
+                        <option value="5">mczadi, pomidory</option>
+                        <option value="6">mczadi, twaróg, oliwki</option>
+                        <option value="7">mczadi, kurczak</option>
+                        <option value="8">twaróg, pomidory</option>
+                        <option value="9">twaróg, ogórki</option>
+                        <option value="10">sernik, orzechy</option>
+                        <option value="11">ciecierzyca, pomidorki, ogórki</option>
+                        <option value="12">tart</option>
+                        <option value="13">onigiri</option>
+                        <option value="14">banan, twaróg, nektarinki</option>
+                        <option value="15">twaróg, fasola</option>
+                        <option value="16">brokóły, pomidorki, ser</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="2">klopsy z brokuły</option>
+                        <option value="3">naleśniki z mięsem</option>
+                        <option value="4">wątróbka z jabłkiem, pomidorki</option>
+                        <option value="5">tart, brokuły</option>
+                        <option value="6">spaghetti z śmetaną i kurczakiem</option>
+                        <option value="7">brito, brokuły</option>
+                        <option value="8">pierogi, brokuły</option>
+                        <option value="9">karkówka, brokuły</option>
+                        <option value="10">zupa(pomidor, fasola, ziemniaki)</option>
+                        <option value="11">kurczak z boczkiem, brokuły</option>
+                        <option value="12">kluski z mięsem</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">barszcz</option>
+                        <option value="2">pierogi </option>
+                        <option value="3">supi souzi</option>
+                        <option value="4">zuppa z kolafiorem</option>
+                        <option value="5">klopsy, ziemniaki, grzyby</option>
+                        <option value="6">gamburger</option>
+                        <option value="7">khaczapuri/lobiani/kubdari/pizza</option>
+                        <option value="8">sznycel</option>
+                        <option value="9">spaghetti z grzybami i ze śmetaną</option>
+                        <option value="10">spaghetti z owocami morza</option>
+                        <option value="11">ryba pecena, sałata z fetą, mczadi</option>
+                        <option value="12">ryba pecena, brokuły, mczadi</option>
+                        <option value="13">żeberga, ziemniaki</option>
+                        <option value="14">piecień, ziemniaki, grzyby</option>
+                        <option value="15">gołąbki</option>
+                        <option value="16">tortilla</option>
+                        <option value="17">onogiri</option>
+                        <option value="18">lobio</option>
+                        <option value="19">kurczak z boczkiem</option>
+                        <option value="20">kluski z mięsem</option>
+                        <option value="21">czikhirtma</option>
+                        <option value="22">bliny</option>
+                        <option value="23">plow</option>
+                        <option value="24">grochówka</option>
+                        <option value="25">tarta</option>
+                        <option value="26">gupta</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">twaróg</option>
+                        <option value="2">mleko, płatki kukur.</option>
+                        <option value="3">sernik</option>
+                        <option value="4">tart</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+    
+            </tr>
+
+            <tr>
+
+                <th scope="row">Piątek</th>
+
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">jajka, orzechy, ogórki</option>
+                        <option value="2">jajka, orzechy, czekolada</option>
+                        <option value="3">banan, orzechy, czekolada</option>
+                        <option value="4">mczadi, jajka</option>
+                        <option value="5">mczadi, pomidory</option>
+                        <option value="6">mczadi, twaróg, oliwki</option>
+                        <option value="7">mczadi, kurczak</option>
+                        <option value="8">twaróg, pomidory</option>
+                        <option value="9">twaróg, ogórki</option>
+                        <option value="10">sernik, orzechy</option>
+                        <option value="11">ciecierzyca, pomidorki, ogórki</option>
+                        <option value="12">tart</option>
+                        <option value="13">onigiri</option>
+                        <option value="14">banan, twaróg, nektarinki</option>
+                        <option value="15">twaróg, fasola</option>
+                        <option value="16">brokóły, pomidorki, ser</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="2">klopsy z brokuły</option>
+                        <option value="3">naleśniki z mięsem</option>
+                        <option value="4">wątróbka z jabłkiem, pomidorki</option>
+                        <option value="5">tart, brokuły</option>
+                        <option value="6">spaghetti z śmetaną i kurczakiem</option>
+                        <option value="7">brito, brokuły</option>
+                        <option value="8">pierogi, brokuły</option>
+                        <option value="9">karkówka, brokuły</option>
+                        <option value="10">zupa(pomidor, fasola, ziemniaki)</option>
+                        <option value="11">kurczak z boczkiem, brokuły</option>
+                        <option value="12">kluski z mięsem</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">barszcz</option>
+                        <option value="2">pierogi </option>
+                        <option value="3">supi souzi</option>
+                        <option value="4">zuppa z kolafiorem</option>
+                        <option value="5">klopsy, ziemniaki, grzyby</option>
+                        <option value="6">gamburger</option>
+                        <option value="7">khaczapuri/lobiani/kubdari/pizza</option>
+                        <option value="8">sznycel</option>
+                        <option value="9">spaghetti z grzybami i ze śmetaną</option>
+                        <option value="10">spaghetti z owocami morza</option>
+                        <option value="11">ryba pecena, sałata z fetą, mczadi</option>
+                        <option value="12">ryba pecena, brokuły, mczadi</option>
+                        <option value="13">żeberga, ziemniaki</option>
+                        <option value="14">piecień, ziemniaki, grzyby</option>
+                        <option value="15">gołąbki</option>
+                        <option value="16">tortilla</option>
+                        <option value="17">onogiri</option>
+                        <option value="18">lobio</option>
+                        <option value="19">kurczak z boczkiem</option>
+                        <option value="20">kluski z mięsem</option>
+                        <option value="21">czikhirtma</option>
+                        <option value="22">bliny</option>
+                        <option value="23">plow</option>
+                        <option value="24">grochówka</option>
+                        <option value="25">tarta</option>
+                        <option value="26">gupta</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">twaróg</option>
+                        <option value="2">mleko, płatki kukur.</option>
+                        <option value="3">sernik</option>
+                        <option value="4">tart</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+    
+            </tr>
+            <tr>
+
+                <th scope="row">Sobota</th>
+
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">jajka, orzechy, ogórki</option>
+                        <option value="2">jajka, orzechy, czekolada</option>
+                        <option value="3">banan, orzechy, czekolada</option>
+                        <option value="4">mczadi, jajka</option>
+                        <option value="5">mczadi, pomidory</option>
+                        <option value="6">mczadi, twaróg, oliwki</option>
+                        <option value="7">mczadi, kurczak</option>
+                        <option value="8">twaróg, pomidory</option>
+                        <option value="9">twaróg, ogórki</option>
+                        <option value="10">sernik, orzechy</option>
+                        <option value="11">ciecierzyca, pomidorki, ogórki</option>
+                        <option value="12">tart</option>
+                        <option value="13">onigiri</option>
+                        <option value="14">banan, twaróg, nektarinki</option>
+                        <option value="15">twaróg, fasola</option>
+                        <option value="16">brokóły, pomidorki, ser</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="2">klopsy z brokuły</option>
+                        <option value="3">naleśniki z mięsem</option>
+                        <option value="4">wątróbka z jabłkiem, pomidorki</option>
+                        <option value="5">tart, brokuły</option>
+                        <option value="6">spaghetti z śmetaną i kurczakiem</option>
+                        <option value="7">brito, brokuły</option>
+                        <option value="8">pierogi, brokuły</option>
+                        <option value="9">karkówka, brokuły</option>
+                        <option value="10">zupa(pomidor, fasola, ziemniaki)</option>
+                        <option value="11">kurczak z boczkiem, brokuły</option>
+                        <option value="12">kluski z mięsem</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">barszcz</option>
+                        <option value="2">pierogi </option>
+                        <option value="3">supi souzi</option>
+                        <option value="4">zuppa z kolafiorem</option>
+                        <option value="5">klopsy, ziemniaki, grzyby</option>
+                        <option value="6">gamburger</option>
+                        <option value="7">khaczapuri/lobiani/kubdari/pizza</option>
+                        <option value="8">sznycel</option>
+                        <option value="9">spaghetti z grzybami i ze śmetaną</option>
+                        <option value="10">spaghetti z owocami morza</option>
+                        <option value="11">ryba pecena, sałata z fetą, mczadi</option>
+                        <option value="12">ryba pecena, brokuły, mczadi</option>
+                        <option value="13">żeberga, ziemniaki</option>
+                        <option value="14">piecień, ziemniaki, grzyby</option>
+                        <option value="15">gołąbki</option>
+                        <option value="16">tortilla</option>
+                        <option value="17">onogiri</option>
+                        <option value="18">lobio</option>
+                        <option value="19">kurczak z boczkiem</option>
+                        <option value="20">kluski z mięsem</option>
+                        <option value="21">czikhirtma</option>
+                        <option value="22">bliny</option>
+                        <option value="23">plow</option>
+                        <option value="24">grochówka</option>
+                        <option value="25">tarta</option>
+                        <option value="26">gupta</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">twaróg</option>
+                        <option value="2">mleko, płatki kukur.</option>
+                        <option value="3">sernik</option>
+                        <option value="4">tart</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+    
+            </tr>
+
+            <tr>
+
+                <th scope="row">Niedziela</th>
+
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">jajka, orzechy, ogórki</option>
+                        <option value="2">jajka, orzechy, czekolada</option>
+                        <option value="3">banan, orzechy, czekolada</option>
+                        <option value="4">mczadi, jajka</option>
+                        <option value="5">mczadi, pomidory</option>
+                        <option value="6">mczadi, twaróg, oliwki</option>
+                        <option value="7">mczadi, kurczak</option>
+                        <option value="8">twaróg, pomidory</option>
+                        <option value="9">twaróg, ogórki</option>
+                        <option value="10">sernik, orzechy</option>
+                        <option value="11">ciecierzyca, pomidorki, ogórki</option>
+                        <option value="12">tart</option>
+                        <option value="13">onigiri</option>
+                        <option value="14">banan, twaróg, nektarinki</option>
+                        <option value="15">twaróg, fasola</option>
+                        <option value="16">brokóły, pomidorki, ser</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="2">klopsy z brokuły</option>
+                        <option value="3">naleśniki z mięsem</option>
+                        <option value="4">wątróbka z jabłkiem, pomidorki</option>
+                        <option value="5">tart, brokuły</option>
+                        <option value="6">spaghetti z śmetaną i kurczakiem</option>
+                        <option value="7">brito, brokuły</option>
+                        <option value="8">pierogi, brokuły</option>
+                        <option value="9">karkówka, brokuły</option>
+                        <option value="10">zupa(pomidor, fasola, ziemniaki)</option>
+                        <option value="11">kurczak z boczkiem, brokuły</option>
+                        <option value="12">kluski z mięsem</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">barszcz</option>
+                        <option value="2">pierogi </option>
+                        <option value="3">supi souzi</option>
+                        <option value="4">zuppa z kolafiorem</option>
+                        <option value="5">klopsy, ziemniaki, grzyby</option>
+                        <option value="6">gamburger</option>
+                        <option value="7">khaczapuri/lobiani/kubdari/pizza</option>
+                        <option value="8">sznycel</option>
+                        <option value="9">spaghetti z grzybami i ze śmetaną</option>
+                        <option value="10">spaghetti z owocami morza</option>
+                        <option value="11">ryba pecena, sałata z fetą, mczadi</option>
+                        <option value="12">ryba pecena, brokuły, mczadi</option>
+                        <option value="13">żeberga, ziemniaki</option>
+                        <option value="14">piecień, ziemniaki, grzyby</option>
+                        <option value="15">gołąbki</option>
+                        <option value="16">tortilla</option>
+                        <option value="17">onogiri</option>
+                        <option value="18">lobio</option>
+                        <option value="19">kurczak z boczkiem</option>
+                        <option value="20">kluski z mięsem</option>
+                        <option value="21">czikhirtma</option>
+                        <option value="22">bliny</option>
+                        <option value="23">plow</option>
+                        <option value="24">grochówka</option>
+                        <option value="25">tarta</option>
+                        <option value="26">gupta</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+                <td>
+                    <select id="choose" class="form-select" aria-label="Default select example"
+                    onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                    toggleField(this,this.nextSibling);
+                    this.selectedIndex='0';
+                    }">
+                        <option disabled selected hidden>Select meal...</option>
+                        <option value="customOption">[type a custom value]</option>
+                        <option value="1">twaróg</option>
+                        <option value="2">mleko, płatki kukur.</option>
+                        <option value="3">sernik</option>
+                        <option value="4">tart</option>
+                    </select><input name="Meal" style="display:none;" disabled="disabled" 
+                    onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                </td>
+    
+            </tr>
+         
+        </tbody>
+      </table>
+</div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    
+  </body>
+</html>
