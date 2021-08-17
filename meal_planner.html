@@ -51,8 +51,36 @@
         box-shadow: 0 5px #666;
         transform: translateY(4px);
         }
+
+        .randomMeal {
+        display: inline-block;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #3089C8;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 3px #999;
+        }
+        .randomMeal:hover {
+            background-color: #3e8e41
+        }
+        .randomMeal:active {
+        background-color: #3e8e41;
+        box-shadow: 0 3px #666;
+        transform: translateY(4px);
+        }
+
+        
+        
         
     </style>
+
+<!-- input inside select options -->
+
+<!-- select random option https://stackoverflow.com/questions/29473543/javascript-select-random-option-->
 
 <script>
     function toggleField(hideObj,showObj){
@@ -63,20 +91,38 @@
       showObj.focus();
     }
 
+    var meal = Array("jajka, orzechy, ogórki", "jajka, orzechy, czekolada", "banan, orzechy, czekolada", "mczadi, jajka", "mczadi, pomidory", "mczadi, twaróg, oliwki", "mczadi, kurczak", "twaróg, pomidory", "twaróg, ogórki", "sernik, orzechy", "ciecierzyca, pomidorki, ogórki", "tart", "onigiri", "banan, twaróg, nektarinki", "twaróg, fasola", "brokóły, pomidorki, ser");
+
+    function randomMeal() {
+    var randomMeal = meal[Math.floor(Math.random() * meal.length)];
+    document.getElementById('randomMeal').value = randomMeal;
+    }
+    var meal2 = Array("kurczak z fasolą", "klopsy z brokuły", "naleśniki z mięsem", "wątróbka z jabłkiem, pomidorki", "tart, brokuły", "spaghetti z śmetaną i kurczakiem", "brito, brokuły", "pierogi, brokuły", "karkówka, brokuły", "zupa(pomidor, fasola, ziemniaki)", "kurczak z boczkiem, brokuły", "kluski z mięsem");
+
+    function randomMeal2() {
+    var randomMeal2 = meal2[Math.floor(Math.random() * meal2.length)];
+    document.getElementById('randomMeal2').value = randomMeal2;
+    }
+    var meal3 = Array("barszcz", "pierogi ", "supi souzi", "zuppa z kolafiorem", "klopsy, ziemniaki, grzyby", "gamburger", "khaczapuri/lobiani/kubdari/pizza", "sznycel", "spaghetti z grzybami i ze śmetaną", "spaghetti z owocami morza", "ryba pecena, sałata z fetą, mczadi", "ryba pecena, brokuły, mczadi", "żeberga, ziemniaki", "piecień, ziemniaki, grzyby", "gołąbki", "tortilla", "onogiri", "lobio", "kurczak z boczkiem", "kluski z mięsem", "czikhirtma", "bliny", "plow", "grochówka", "tarta", "gupta");
+
+    function randomMeal3() {
+    var randomMeal3 = meal3[Math.floor(Math.random() * meal3.length)];
+    document.getElementById('randomMeal3').value = randomMeal3;
+    }
+    var meal4 = Array("twaróg", "mleko, płatki kukur.", "sernik");
+
+    function randomMeal4() {
+    var randomMeal4 = meal4[Math.floor(Math.random() * meal4.length)];
+    document.getElementById('randomMeal4').value = randomMeal4;
+    }
 </script>
 
 
   </head>
 
   <body>
-      <!--function somefunction(value){
-     if(value == customOption){
-      $("customOption").css("background-color","red");
-     }
-  }
-  onchange="somefunction($(this).val())"> -->
 
-      <!-- header -->
+    <!-- header -->
     <div id="fixed-header">
         <img src="gif.gif" alt="" width="80">
             <h1>Weakly Meal Planner</h1>       
@@ -91,10 +137,22 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Śniadanie Jacka</th>
-            <th scope="col">Obiad Jacka	</th>
-            <th scope="col">Kolacja Razem</th>
-            <th scope="col">Coś dla Mari</th>
+            <th scope="col">Śniadanie Jacka <div>
+                <button class="randomMeal" type="randomMeal" onclick="randomMeal()">Random</button>
+                <input name="randomMeal" id="randomMeal">
+              </div></th>
+            <th scope="col">Obiad Jacka<div>
+                <button class="randomMeal" type="randomMeal2" onclick="randomMeal2()">Random</button>
+                <input name="randomMeal2" id="randomMeal2">
+              </div></th>
+            <th scope="col">Kolacja Razem<div>
+                <button class="randomMeal" type="randomMeal3" onclick="randomMeal3()">Random</button>
+                <input name="randomMeal3" id="randomMeal3">
+              </div></th>
+            <th scope="col">Coś dla Mari<div>
+                <button class="randomMeal" type="randomMeal4" onclick="randomMeal4()">Random</button>
+                <input name="randomMeal4" id="randomMeal4">
+              </div></th>
 
           </tr>
         </thead>
@@ -131,7 +189,7 @@
             
                     </select><input name="Meal" style="display:none;" disabled="disabled" 
                     onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
-
+                
                 </td>
 
                 <td>
@@ -142,7 +200,7 @@
                     }">
                         <option disabled selected hidden>Select meal...</option>
                         <option value="customOption">[type a custom value]</option>
-                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="1">kurczak z fasolą</option>
                         <option value="2">klopsy z brokuły</option>
                         <option value="3">naleśniki z mięsem</option>
                         <option value="4">wątróbka z jabłkiem, pomidorki</option>
@@ -253,7 +311,7 @@
                     }">
                         <option disabled selected hidden>Select meal...</option>
                         <option value="customOption">[type a custom value]</option>
-                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="1">kurczak z fasolą</option>
                         <option value="2">klopsy z brokuły</option>
                         <option value="3">naleśniki z mięsem</option>
                         <option value="4">wątróbka z jabłkiem, pomidorki</option>
@@ -362,7 +420,7 @@
                     }">
                         <option disabled selected hidden>Select meal...</option>
                         <option value="customOption">[type a custom value]</option>
-                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="1">kurczak z fasolą</option>
                         <option value="2">klopsy z brokuły</option>
                         <option value="3">naleśniki z mięsem</option>
                         <option value="4">wątróbka z jabłkiem, pomidorki</option>
@@ -471,7 +529,7 @@
                     }">
                         <option disabled selected hidden>Select meal...</option>
                         <option value="customOption">[type a custom value]</option>
-                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="1">kurczak z fasolą</option>
                         <option value="2">klopsy z brokuły</option>
                         <option value="3">naleśniki z mięsem</option>
                         <option value="4">wątróbka z jabłkiem, pomidorki</option>
@@ -580,7 +638,7 @@
                     }">
                         <option disabled selected hidden>Select meal...</option>
                         <option value="customOption">[type a custom value]</option>
-                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="1">kurczak z fasolą</option>
                         <option value="2">klopsy z brokuły</option>
                         <option value="3">naleśniki z mięsem</option>
                         <option value="4">wątróbka z jabłkiem, pomidorki</option>
@@ -688,7 +746,7 @@
                     }">
                         <option disabled selected hidden>Select meal...</option>
                         <option value="customOption">[type a custom value]</option>
-                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="1">kurczak z fasolą</option>
                         <option value="2">klopsy z brokuły</option>
                         <option value="3">naleśniki z mięsem</option>
                         <option value="4">wątróbka z jabłkiem, pomidorki</option>
@@ -797,7 +855,7 @@
                     }">
                         <option disabled selected hidden>Select meal...</option>
                         <option value="customOption">[type a custom value]</option>
-                        <option value="1">brokóły, pomidorki, ser</option>
+                        <option value="1">kurczak z fasolą</option>
                         <option value="2">klopsy z brokuły</option>
                         <option value="3">naleśniki z mięsem</option>
                         <option value="4">wątróbka z jabłkiem, pomidorki</option>
